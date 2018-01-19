@@ -1,0 +1,7 @@
+name: ConnectWp
+code: ConnectWp
+version: 1.0.0
+service:
+    - ConnectWpServiceProvider
+orm.path:
+    - /Resource/doctrine

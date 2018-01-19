@@ -1,0 +1,67 @@
+{# default_frame.twigを継承して共通のヘッダー、フッターを表示するにはdtb_page_layout に登録が必要 #}
+{% extends 'default_frame.twig' %}
+
+{% set body_class = 'connectwp_page' %}
+
+{% block stylesheet %}
+    <style>
+        .post-link {
+            margin-left: 10px;
+        }
+    </style>
+
+{% endblock stylesheet %}
+
+{% block main %}
+    <h1 class="page-heading">wpの記事一覧</h1>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-11">
+            <h2 class="">wpの記事一覧</h2>
+            {% for post in postData %}
+                <p>
+                    {{ post.date|date('Y-m-d')}}
+                    <span class="post-link">
+                        <a href="{{ post.link }}">{{ post.title.rendered }}</a>
+                    </span>
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-11">
+            <h2 class="">特定カテゴリで絞り込んだwpの記事一覧</h2>
+            {% for post2 in postData2 %}
+                <p>
+                    {{ post2.date|date('Y-m-d')}}
+                    <span class="post-link">
+                        <a href="{{ post2.link }}">{{ post2.title.rendered }}</a>
+                    </span>
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-11">
+            <h2 class="">指定したIDの記事</h2>
+            <p>
+                {{ postData3.date|date('Y-m-d')}}
+                <span class="post-link">
+                    <a href="{{ postData3.link }}">{{ postData3.title.rendered }}</a>
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-11">
+            <h2 class="">固定ページ一覧</h2>
+            {% for post4 in postData4 %}
+                <p>
+                    {{ post4.date|date('Y-m-d')}}
+                    <span class="post-link">
+                        <a href="{{ post4.link }}">{{ post4.title.rendered }}</a>
+                    </span>
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
